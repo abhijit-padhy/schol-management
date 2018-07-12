@@ -1,0 +1,11 @@
+.list-group{
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
