@@ -9,7 +9,9 @@ import { Student } from '../student';
 })
 export class StudentsComponent implements OnInit {
 
-  // students: Student[] = [];
+  /**
+   * @Abhijit P
+   */
   student: Student = new Student();
   students: Map<number,Student> = new Map;
   selectedStudent: Student = new Student();
@@ -24,6 +26,10 @@ export class StudentsComponent implements OnInit {
     this.student.address = "";
     this.student.name = "";
   }
+  /**
+   * Adds a student to student list
+   * valildates id and name fields are not empty
+   */
   createStudent(){
     console.log("obj: ",this.student);
     if (this.student.id && this.student.name) {
@@ -47,10 +53,16 @@ export class StudentsComponent implements OnInit {
   getKeys(map){
     return Array.from(map.values());
   }
+  /**
+   * Deletes a student from Students list
+   */
   deleteStudent(obj,_event){
     this.students.delete(obj.id);
     _event.preventDefault();
   }
+  /**
+   * opens a popup window to edit student data
+   */
   selectStudent(obj,_event){
     this.selectedStudent.name = obj.name;
     this.selectedStudent.address = obj.address;
@@ -58,6 +70,10 @@ export class StudentsComponent implements OnInit {
     this.selectedStudent.id = obj.id;
     _event.preventDefault();
   }
+  /**
+   * updates student data 
+   * valildates name field is not empty
+   */
   updateStudent(_event){
     if (this.selectedStudent.name) {
       this.students.set(this.selectedStudent.id,this.selectedStudent);
@@ -71,6 +87,9 @@ export class StudentsComponent implements OnInit {
     _event.preventDefault();
     _event.stopPropagation();
   }
+  /**
+   * sets styles for update message in the popup window
+   */
   getUpdateMsgclass(){
     if (this.updateFlag == true) {
       return 'green';
